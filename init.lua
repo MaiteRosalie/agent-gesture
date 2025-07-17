@@ -5,10 +5,13 @@
 -- CONFIGURATION
 -------------------------------------
 local config = {
-    openai_api_key = "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",
+    openai_api_key = "API_KEY",
     model = "gpt-4o",
     prompt = [[
+        Analyze this screenshot from my Mac and:
         - Answer the question highlighted
+        - If there is no question highlighted then answer the question closest to the mouse
+        - limit the answer to a maximum of 30 words
     ]]
 }
 
@@ -78,10 +81,26 @@ curl -s -X POST https://api.openai.com/v1/chat/completions \
         withdrawAfter = 10
     }):send()
 
-    hs.execute("say \"Screen analyzed.\"")
     hs.execute("say " .. shellEscape(answer))
   
 end
+
+-------------------------------------
+-- GESTURE SETUP
+-------------------------------------
+
+local middleClickWatcher = hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, function(event)
+    local button = event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
+    
+    if button == 2 then  -- Button 2 = middle mouse (scroll wheel click)
+        analyzeScreenshot()  -- 👈 Replace with your function
+    end
+
+    return false
+end)
+
+middleClickWatcher:start()
+
 
 -------------------------------------
 -- HOTKEY SETUP
