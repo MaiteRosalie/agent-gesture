@@ -27,6 +27,8 @@ This project contains an `init.lua` script that triggers a visual AI agent to:
 3. Place or link init.lua in your Hammerspoon config folder.
 4. Reload or start Hammerspoon so it loads your init.lua config.
 
+---
+
 ## How to Run
 
 Activate the script by triggering the configured Hammerspoon hotkey or command (as defined in your init.lua).
