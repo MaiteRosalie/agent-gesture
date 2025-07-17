@@ -9,8 +9,7 @@ local config = {
     model = "gpt-4o",
     prompt = [[
         Analyze this screenshot from my Mac and:
-        - Answer the question highlighted
-        - If there is no question highlighted then answer the question closest to the mouse
+        - Add your prompt here...
         - limit the answer to a maximum of 30 words
     ]]
 }
