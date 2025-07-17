@@ -92,8 +92,8 @@ end
 local middleClickWatcher = hs.eventtap.new({hs.eventtap.event.types.otherMouseDown}, function(event)
     local button = event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
     
-    if button == 2 then  -- Button 2 = middle mouse (scroll wheel click)
-        analyzeScreenshot()  -- 👈 Replace with your function
+    if button == 2 then
+        analyzeScreenshot()
     end
 
     return false
